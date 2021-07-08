@@ -1,32 +1,51 @@
 @extends('master')
 @section('content')
     <div class="container custom-product">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
+        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+
             <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img class="d-block w-100" src="https://images-na.ssl-images-amazon.com/images/I/41nAzm2W09L._AC_.jpg" alt="First slide">
-              </div>
-              <div class="carousel-item">
-                <img class="d-block w-100" src="https://www.slashgear.com/wp-content/uploads/2021/04/lg-eve-1280x720.jpg" alt="Second slide">
-              </div>
-              <div class="carousel-item">
-                <img class="d-block w-100" src="https://images.samsung.com/au/smartphones/galaxy-note20/buy/001-note20series-productimage-mo-720.jpg" alt="Third slide">
-              </div>
+                @foreach ($products as $item)
+                    <div class="carousel-item {{ $item->id == 1 ? 'active' : '' }}" data-bs-interval="10000">
+                        <img src="{{ $item->gallery }}" class="" alt="{{ $item->name }}"
+                            style="height: 300px; width: auto">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>{{ $item->name }}</h5>
+                            <p>{{ $item->description }}</p>
+                        </div>
+                    </div>
+                @endforeach
+
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-          
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
     </div>
+
+    <div class="trending-wraper">
+      @foreach ($products as $item)
+      <div class="trending-item">
+        <img src="{{ $item->gallery }}" class="" alt="{{ $item->name }}" style="height: 100px; width: auto">
+        <div class="">
+            <h5>{{ $item->name }}</h5>
+        </div>
+    </div>
+      @endforeach
+      
+    </div>
+
 @endsection
+<style>
+  .trending-item{
+    float: left;
+    width: 20%;
+  }
+  .trending-wraper{
+    margin: 20px;
+  }
+</style>
