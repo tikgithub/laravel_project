@@ -13,8 +13,20 @@
                 <h4>Description: {{ $product->description }}</h4>
                 <br><br>
                 <div class="row ">
-                    <div class="col-6 d-flex justify-content-end "> <a href="" class="btn btn-warning">Add to Cart</a></div>
-                    <div class="col-6 d-flex justify-content-start "> <a href="" class="btn btn-success">Buy Now</a></div>
+                    <div class="col-6 d-flex justify-content-end ">
+                        <form action="/add_to_cart" method="post">
+                            @csrf
+                            <input type="hidden" name="product_id" value="{{$product->id}}">
+                            <button href="" class="btn btn-warning">Add to Cart</button>
+                        </form>
+
+                    </div>
+                    <div class="col-6 d-flex justify-content-start "> 
+                        <form>
+                            <button href="" class="btn btn-success">Buy Now</button>
+                        </form>
+                        
+                    </div>
                 </div>
             </div>
         </div>

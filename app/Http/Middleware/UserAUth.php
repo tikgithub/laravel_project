@@ -19,6 +19,9 @@ class UserAUth
        if($request->path() == 'login' && $request->session()->has('user')){
            return redirect('/');
        }
+       if($request->path()== 'cartlist' && !$request->session()->has('user')){
+        return redirect('/login');
+       }
         return $next($request);
     }
 }
