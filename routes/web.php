@@ -31,3 +31,10 @@ Route::get('logout',function(){
     return redirect('/login');
 });
 Route::get('cartlist',[ProductController::class,'cartList']);
+Route::get('cartremove/{id}',[ProductController::class,'removecart']);
+Route::get('cartremoveall',[ProductController::class,'removeAllCart']);
+Route::get('ordernow',[ProductController::class,'orderNow']);
+Route::post('payorder',[ProductController::class,'payOrder']);
+Route::get('myorders',[ProductController::class,'myOrders']);
+Route::view('register','register');
+Route::post('register',[UserController::class,'register']);

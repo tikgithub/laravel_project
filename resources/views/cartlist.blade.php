@@ -1,7 +1,18 @@
 @extends('master')
 @section('content')
     <div class="container" style="padding-top: 20px">
+        
         <h2 class="text-center" style="padding-bottom: 20px">Shopping cart</h2>
+        <div class="row">
+            <div class="col-6 text-start">
+                <a href="/ordernow" class="btn btn-success">Order Now</a>
+            </div>
+            <div class="col-6 text-end">
+                <a class="btn btn-sm btn-danger" href="/cartremoveall">
+                    <i class="fa fa-trash-o" aria-hidden="true"></i> All
+                </a>
+            </div>
+        </div>
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -24,9 +35,9 @@
                         <td class="align-middle">
                             <div class="row">
                                 <div class="col-12  d-flex justify-content-center">
-                                    <button class="btn btn-sm btn-danger">
+                                    <a class="btn btn-sm btn-danger" href="/cartremove/{{$item->cart_id}}">
                                         <i class="fa fa-trash-o" aria-hidden="true"></i> Remove
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </td>
